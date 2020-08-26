@@ -5,7 +5,7 @@ from emp_register.models import Emp_register
 
 # Create your views here.
 
-def search(request):
+"""def search(request):
     query_string = ''
     found_entries = None
     if ('q' in request.GET) and request.GET['q'].strip():
@@ -14,7 +14,7 @@ def search(request):
         posts = Post.objects.filter(entry_query).order_by('created')
         return render(request, 'search.html', { 'query_string': query_string, 'posts': posts })
     else:
-        return render(request, 'search.html', { 'query_string': 'Null', 'found_entries': 'Enter a search term' })
+        return render(request, 'search.html', { 'query_string': 'Null', 'found_entries': 'Enter a search term' })"""
 
 
 def emp(request):
@@ -52,11 +52,13 @@ def edit(request, id):
 
 def update(request, id):
 
-    form = Emp_form(request.POST)
-    emp_register = Emp_register.objects.get(id=id)
-    emp_register.f= form
-    emp_register.save()
-    return render(request, "view.html",{'emp_register': emp_register})
+    #form = Emp_form(request.POST)
+    #print(form)
+    emp_reg = Emp_register.objects.get(id=id)
+    #emp_register.f= form
+
+    emp_reg.save()
+    return render(request, "view.html",{'emp_register': emp_reg})
    
 
 def add(request):
@@ -75,9 +77,16 @@ def add(request):
     return render(request, 'index.html', {'form': form})
 
 
-class SearchView():
+def user(request):
+    emp_register = Emp_register.objects.all()
+    return render(request, "user.html",{'emp_register': emp_register})
+
+
+
+"""class SearchView():
    
-    template_name = 'search.html'
+    template_name = 'search.html'log
+
     context_object_name = 'all_search_results'
 
     def get_queryset(self):
@@ -88,4 +97,4 @@ class SearchView():
           result = postresult
        else:
            result = None
-       return result
+       return result"""

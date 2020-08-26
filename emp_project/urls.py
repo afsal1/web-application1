@@ -27,7 +27,8 @@ urlpatterns = [
     path('delete/<id>', views.delete),
     path('edit/<id>', views.edit),
     path('add/', views.add),
-    path('update/<id>', views.update),  
-    url(r'^search/', views.search, name="search"),
+    path('update/<id>', views.update),
+    path('user/', views.user),  
+    #url(r'^search/', views.search, name="search"),
 ]
 

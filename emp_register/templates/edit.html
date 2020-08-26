@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
 </head>
 <body>
-    <form method="POST" class="post-form" action="/update/{{emp_register.id}}">
+    <form method="POST" class="post-form" action="/add/{{emp_reg.id}}">
         <input type="hidden" name="id" id="id" required maxlength="20" value="{{ emp_register.id }}"/>
 
         {% csrf_token %}
