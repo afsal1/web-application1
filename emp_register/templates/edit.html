@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Index</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+</head>
+<body>
+    <form method="POST" class="post-form" action="/update/{{emp_register.id}}">
+        <input type="hidden" name="id" id="id" required maxlength="20" value="{{ emp_register.id }}"/>
+
+        {% csrf_token %}
+        <div class="container">
+
+<br>
+        <div class="form-group row">
+            <label class="col-sm-1 col-form-label"></label>
+            <div class="col-sm-4">
+                <h3>Enter Details</h3>
+            </div>
+        </div>
+       
+            <div class="form-group row">
+                <label class="col-sm-1 col-form-label">Student Name:</label>
+                <div class="col-sm-4">
+                    <input type="text" name="f_name" value= "{{emp_register.f_name}}">
+                </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-sm-1 col-form-label">Last Name:</label>
+                    <div class="col-sm-4">
+                        <input type="text" name="l_name" value= "{{emp_register.l_name}}">
+                    </div>
+                    </div>
+                <div class="form-group row">
+                    <label class="col-sm-1 col-form-label">Student Email:</label>
+                    <div class="col-sm-4">
+                        <input type="email" name="email" value= "{{emp_register.email}}">
+                    </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-sm-1 col-form-label">Student Id:</label>
+                        <div class="col-sm-4">
+                          <button type="submit" class="btn btn-primary">Submit</button>
+                        </div>
+                        </div>
+        </div>
+    </form>
+</body>
+</html>
