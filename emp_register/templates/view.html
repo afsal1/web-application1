@@ -1,46 +1,78 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Student List</title>
-    {% load static %}
+   
     <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
 </head>
 <body>
-    <form id="searchform" action="{{ emp_register.id }}/search/" method="get">
-        <input type="text" name="q" type="text"/>
-        <button type="button" onclick="searchform.submit()">Search</button>
-    </form>
+    {% if user.is_authenticated %}
+    <h1 style="text-align: center;" class="display-3">STUDENT DETAILS</h1>
     <table class="table table-stripped table-bordered table-sm">
         <thead class="thead-dark">
             <tr>
                 <th>First Name</th>
                 <th>Last Name</th>
+                <th>User Name</th>
                 <th>Email</th>
+               
+                
                 <th>Actions</th>
-                <th><a href="/add/ {{ emp_reg.id }}" >Add</a></th>
+                
             </tr>
         </thead>
-        {% for emp_reg in emp_register %}
+        {% for user in users %}
         <tr>
+            
+            <td>{{ user.first_name }}</td>
+            <td>{{ user.last_name }}</td>
+            <td>{{ user.username }}</td>
+            <td>{{ user.email }}</td>
            
-            <td>{{ emp_reg.f_name }}</td>
-            <td>{{ emp_reg.l_name }}</td>
-            <td>{{ emp_reg.email }}</td>
+            
             
             <td>
                 
-               <a href="/edit/{{ emp_reg.id }}"><span class="btn btn-success">Edit</span></a>
-               <a href="/delete/ {{ emp_reg.id }}" class="btn btn-danger">Delete</a>
+               <a href="/edit/{{ user.id }}"><span class="btn btn-outline-success my-2 my-sm-0">Edit</span></a>
+               <a href="/delete/ {{ user.id }}" class="btn btn-outline-danger my-2 my-sm-0">Delete</a>
+               
                
             </td>
 
         </tr>
 
 {% endfor %}
+
     </table>
+    <form class="form-inline my-2 my-lg-0" method="POST">
+        {% csrf_token %}
+        <table>
+            <tr>
+                <td><input class="form-control mr-sm-2" name="search" type="search" placeholder="Search your first name" aria-label="Search"></td>
+                <td> <button class="btn btn-outline-primary my-2 my-sm-0" type="submit">Search</button></td> 
+            </form>
+            <form class="form-inline my-2 my-lg-0">
+                <td></td>
+                <td></td>
+                <td></td>
+               
+                <td><a href="/add/"  class="btn btn-outline-warning my-2 my-sm-0 " >Add</a></td>
+            
+                <td></td>
+                <td></td>
+                <td></td>
+                <td><a href="/adminlogout/"  class="btn btn-outline-danger my-2 my-sm-0 " >Log out</a></td>
+            </tr>
+        </table>
+        
+      </form>
+    
 
     
+      {% endif %}
+
 </body>
 </html>

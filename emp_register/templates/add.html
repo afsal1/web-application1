@@ -15,7 +15,7 @@
         }
         </style>
     <div class="content">
-    <form method="POST" class="post-form" action="{% url 'emp' %}">
+    <form method="POST" class="post-form" action="{% url 'add' %}">
         {% csrf_token %}
         <div class="container">
 
@@ -48,10 +48,10 @@
                         <input type="password" name="password1" id="password" required>
                         </div>
                     </div>
-                   
-                    <div class="form-group row pl-5">
+                    
+                    <div class="form-group row">
                        
-                        <div class="col-sm-2">
+                        <div class="col-sm-4">
                           <button type="submit" class="btn btn-primary" >Submit</button>
                         </div>
                         </div>

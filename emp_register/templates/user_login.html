@@ -1,0 +1,62 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Index</title>
+    
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+</head>
+<body>
+    {% if user.is_authenticated %}
+    <div class="row" style="justify-content:center;">
+        <h1>HI,{{user.username}}</h1>
+    </div>
+    <div class="row" style="justify-content:center;">
+        <a href="/logout/ {{ user.id }}"  class="btn btn-outline-danger my-2 my-sm-0 " >Log out</a>
+       </div> 
+
+
+{% else %}
+
+    <form method="POST" class="post-form">
+        {% csrf_token %}
+        <div class="container">
+
+<br>
+        <div class="form-group row" style="padding-right: 42em;">
+            <label class="col-sm-1 col-form-label" ></label>
+            <div class="col-md-6 ">
+                <h1><span >Login</span></h1>
+            </div>
+        </div>
+       
+           
+                <div class="input pb-3">
+                    <input type="text" placeholder="Username" name="username" required />
+                    <span class="fa fa-envelope"></span>
+                </div>
+                    <div class="input pt-3">
+						<input type="password" placeholder="Password" name="password" required />
+						<span class="fa fa-unlock"></span>
+					</div>
+                    <div class="form-group row">
+                       
+                        <div class="col-sm-4 pt-3">
+                          <button type="submit" class="btn btn-primary">Submit</button>
+                        </div>
+                        </div>
+        </div>
+        <a href="/emp/" class="bottom-text-w3ls">Create new account?</a>
+    </form>
+    <div>
+        {% for message in messages %}
+        <h3>{{ message}}</h3>
+        {% endfor %}
+    </div>
+{% endif %}
+</body>
+</html>
+
+

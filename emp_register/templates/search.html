@@ -1,10 +1,28 @@
-<p>Posts containing '{{query_string}}'</p> 
-{% for post in posts %}
-    <div>
-        <span> {{ post.created }} </span>
-        <a href="{% url 'post_detail' slug=post.slug %}"><h2 class="page-title">{{ post.title }}</h2></a>
-        <div class="post">
-            {{ post.body|safe }}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student List</title>
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+</head>
+<body>
+   
+   <div class="card" style="width: 100%;">
+         <div class="card-body">
+            
+            
+           
+            <h2>First Name:{{ users.first_name }}</h2>
+            <h2>Last Name:{{ users.last_name }}</h2>
+            <h2>User Name:{{ users.username }}</h2>
+            <h2>Email:{{ users.email }}</h2>
+            <a href="/view/ " class="btn btn-outline-info my-2 my-sm-0">Back</a>
+
+           
         </div>
     </div>
-{% endfor %}
+   
+</body>
+</html>
